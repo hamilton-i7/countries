@@ -1,10 +1,13 @@
-import Header from '../general/Header';
+import CountrySearchContainer from '../ui/CountrySearch';
+import StyledNav from '../general/Nav.style';
 
 function Home() {
   return (
     <>
-      <Header />
-      <main></main>
+      <StyledNav />
+      <main>
+        <CountrySearchContainer />
+      </main>
     </>
   );
 }
