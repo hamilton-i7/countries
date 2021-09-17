@@ -12,7 +12,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: ${props => props.theme.background};
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.2rem;
   }
 `;
 
