@@ -41,3 +41,7 @@ export default function useComponentVisible(initialIsVisible) {
 
   return { ref, isComponentVisible, setIsComponentVisible };
 }
+
+export function stripDiacritics(str) {
+  return str.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}

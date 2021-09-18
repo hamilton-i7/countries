@@ -1,11 +1,9 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext, useRef, useState } from 'react';
+import { useContext } from 'react';
 import { HomeContext } from '../pages/Home';
-import axios from 'axios';
-import useComponentVisible, { areEquals } from '../../utils';
-
-const API = 'https://restcountries.eu/rest/v2';
+import useComponentVisible from '../../utils';
+import { getCountriesByRegion } from '../../network/api-helpers';
 
 function FilterDropdown({ className }) {
   const { regions, selectedRegion, setSelectedRegion, setCountries } =
@@ -47,18 +45,6 @@ function FilterDropdown({ className }) {
       {isComponentVisible && dropdownContent}
     </div>
   );
-}
-
-async function getCountriesByRegion(defaultRegion, region, onSuccess) {
-  try {
-    const url = areEquals(defaultRegion, region)
-      ? API + '/all'
-      : `${API}/region/${region.toLowerCase()}`;
-    const response = await axios.get(url);
-    onSuccess(response.data);
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 export default FilterDropdown;

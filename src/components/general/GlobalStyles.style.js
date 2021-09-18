@@ -11,14 +11,24 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  html, body {
+    min-height: 100vh;
+  }
+
   html {
     font-size: 62.5%;
+  }
+
+  body, #root, main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 
   body {
     background-color: ${props => props.theme.background};
     box-sizing: border-box;
-    color: ${props => props.theme.onBackground};
+    color: ${props => props.theme.onBackground};    
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;

@@ -1,0 +1,24 @@
+import styled from 'styled-components';
+import NoCountries from './NoCountries';
+
+const StyledNoCountries = styled(NoCountries)`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  & > svg {
+    color: ${props => props.theme.onSurface};
+    font-size: 3.2rem;
+    margin-top: 2.4rem;
+  }
+
+  & > h2 {
+    font-size: 2rem;
+    margin-top: 1.6rem;
+  }
+`;
+
+export default StyledNoCountries;
