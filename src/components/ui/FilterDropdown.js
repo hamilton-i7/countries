@@ -2,11 +2,18 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function FilterDropdown({ className }) {
-  const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+  const regions = [
+    'Filter by Region - All',
+    'Africa',
+    'America',
+    'Asia',
+    'Europe',
+    'Oceania',
+  ];
   return (
     <div className={className}>
       <button>
-        Filter by region
+        {regions[0]}
         <FontAwesomeIcon icon={faChevronDown} />
       </button>
 

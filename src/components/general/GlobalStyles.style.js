@@ -26,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     padding: 2.4rem 1.6rem;
+    padding-bottom: 6.5rem;
   }
 `;
 
