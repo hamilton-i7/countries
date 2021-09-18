@@ -9,8 +9,14 @@ const StyledCountryCard = styled(CountryCard)`
   width: 26.4rem;
 
   & > header {
-    background: center / cover no-repeat url(${props => props.flag});
     height: 16rem;
+    width: 100%;
+
+    & > img {
+      height: 16rem;
+      object-fit: cover;
+      width: 100%;
+    }
   }
 
   & > div {

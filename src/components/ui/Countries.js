@@ -1,10 +1,14 @@
+import { useContext } from 'react';
+import { HomeContext } from '../pages/Home';
 import StyledCountryCard from './CountryCard.style';
 
-function Countries({ countries, className }) {
+function Countries({ className }) {
+  const { countries } = useContext(HomeContext);
+
   return (
     <div className={className}>
       {countries.map(country => (
-        <StyledCountryCard country={country} flag={country.flag} />
+        <StyledCountryCard key={country.name} country={country} />
       ))}
     </div>
   );

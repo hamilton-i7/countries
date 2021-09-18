@@ -1,4 +1,6 @@
-function toRGBA(hexValue, alpha) {
+import { useState, useEffect, useRef } from 'react';
+
+export function toRGBA(hexValue, alpha) {
   if (hexValue.length < 6 || hexValue.length > 7) {
     throw new Error('Only six or seven digit hex colors are allowed.');
   }
@@ -15,4 +17,27 @@ function toRGBA(hexValue, alpha) {
   return `rgba(${aRgb.join(',')})`;
 }
 
-export default toRGBA;
+export function areEquals(str1, str2) {
+  return str1.localeCompare(str2, undefined, { sensitivity: 'base' }) === 0;
+}
+
+export default function useComponentVisible(initialIsVisible) {
+  const [isComponentVisible, setIsComponentVisible] =
+    useState(initialIsVisible);
+  const ref = useRef(null);
+
+  const handleClickOutside = event => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setIsComponentVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  });
+
+  return { ref, isComponentVisible, setIsComponentVisible };
+}

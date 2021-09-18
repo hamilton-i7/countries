@@ -30,16 +30,20 @@ const StyledFilterDropdown = styled(FilterDropdown)`
     background-color: ${props => props.theme.surface};
     border-radius: 0.5rem;
     box-shadow: ${SHADOW};
-    display: none;
     left: 0;
     list-style: none;
-    padding: 1.6rem 2.4rem;
+    padding: 1.6rem 0;
     position: absolute;
     top: 4.8rem;
     width: 100%;
 
-    & > li:not(:first-child):not(:last-child) {
-      margin: 0.8rem 0;
+    & > li {
+      padding: 0.8rem 2.4rem;
+
+      &:hover,
+      &:active {
+        background-color: rgba(0, 0, 0, 0.12);
+      }
     }
   }
 `;

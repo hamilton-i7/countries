@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input from './Input';
-import toRGBA from '../../utils';
+import { toRGBA } from '../../utils';
 import { SHADOW } from './GlobalStyles.style';
 
 const StyledInput = styled(Input)`

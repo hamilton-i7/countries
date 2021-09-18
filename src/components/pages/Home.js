@@ -2,51 +2,47 @@ import StyledNav from '../general/Nav.style';
 import axios from 'axios';
 import StyledCountrySearchContainer from '../ui/CountrySearch.style';
 import StyledCountries from '../ui/Countries.style';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const FILTERED_API =
   'https://restcountries.eu/rest/v2/all?fields=name;capital;population;region;flag';
 
-const sampleCountries = [
-  {
-    name: 'Germany',
-    population: 81_770_900,
-    region: 'Europe',
-    capital: 'Berlin',
-  },
-  {
-    name: 'United States of America',
-    population: 323_947_000,
-    region: 'Americas',
-    capital: 'Washington, D.C.',
-  },
-  {
-    name: 'Brazil',
-    population: 206_135_893,
-    region: 'Americas',
-    capital: 'Brasília',
-  },
-  {
-    name: 'Iceland',
-    population: 334_300,
-    region: 'Europe',
-    capital: 'Reykjavík',
-  },
-];
+export const HomeContext = createContext(null);
 
 function Home() {
   const [countries, setCountries] = useState([]);
 
+  const regions = [
+    'Filter by Region - All',
+    'Africa',
+    'Americas',
+    'Asia',
+    'Europe',
+    'Oceania',
+  ];
+
+  const [selectedRegion, setSelectedRegion] = useState(regions[0]);
+
   useEffect(() => {
     getCountries(data => setCountries(data));
-  }, [countries]);
+  }, []);
 
   return (
     <>
       <StyledNav />
       <main>
-        <StyledCountrySearchContainer />
-        <StyledCountries countries={countries} />
+        <HomeContext.Provider
+          value={{
+            countries,
+            setCountries,
+            regions,
+            selectedRegion,
+            setSelectedRegion,
+          }}
+        >
+          <StyledCountrySearchContainer />
+          <StyledCountries />
+        </HomeContext.Provider>
       </main>
     </>
   );
