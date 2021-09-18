@@ -12,9 +12,11 @@ function CountryCard({ country, className }) {
         <p>
           <span>Region:</span> {country.region}
         </p>
-        <p>
-          <span>Capital:</span> {country.capital}
-        </p>
+        {country.capital && (
+          <p>
+            <span>Capital:</span> {country.capital}
+          </p>
+        )}
       </div>
     </div>
   );

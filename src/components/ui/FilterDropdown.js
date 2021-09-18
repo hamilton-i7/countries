@@ -1,21 +1,10 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext } from 'react';
-import { HomeContext } from '../pages/Home';
 import useComponentVisible from '../../utils';
-import { getCountriesByRegion } from '../../network/api-helpers';
 
-function FilterDropdown({ className }) {
-  const { regions, selectedRegion, setSelectedRegion, setCountries } =
-    useContext(HomeContext);
+function FilterDropdown({ className, regions, selectedRegion, onRegionClick }) {
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
-
-  const handleRegion = region => {
-    setSelectedRegion(region);
-    setIsComponentVisible(false);
-    getCountriesByRegion(regions[0], region, data => setCountries(data));
-  };
 
   const handleDropdown = () => {
     setIsComponentVisible(prevState => !prevState);
@@ -27,7 +16,8 @@ function FilterDropdown({ className }) {
         <li
           key={region}
           onClick={() => {
-            handleRegion(region);
+            onRegionClick(region);
+            setIsComponentVisible(false);
           }}
         >
           {region}

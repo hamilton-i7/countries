@@ -2,14 +2,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
-function Input({ value, setValue, placeholder, className }) {
+function Input({ value, onValueChange, placeholder, className }) {
   return (
     <InputContainer>
       <input
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={setValue}
+        onChange={onValueChange}
         className={className}
       />
       <StyledInputIcon />
