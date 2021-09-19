@@ -10,7 +10,7 @@ const THEME = 'theme';
 const LIGHT_THEME = 'light theme';
 const DARK_THEME = 'dark theme';
 
-function App() {
+export default function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
 
   useEffect(() => {
@@ -44,5 +44,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;

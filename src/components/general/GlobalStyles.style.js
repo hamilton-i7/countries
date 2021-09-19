@@ -1,4 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import {
+  lgScreenBreakpoint2,
+  lgScreenBreakpoint3,
+  mdScreenBpreakpoint2,
+  mdScreenBreakpoint,
+} from '../../utils';
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
@@ -17,6 +23,10 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+
+    @media (min-width: ${lgScreenBreakpoint3}) {
+      font-size: 70%;
+    }
   }
 
   body, #root, main {
@@ -32,11 +42,31 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Nunito Sans', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;
+
+    @media (min-width: ${mdScreenBreakpoint}) {
+      font-size: 1.4rem;
+    }
   }
 
   main {
     padding: 2.4rem 1.6rem;
     padding-bottom: 6.5rem;
+
+    @media (min-width: ${mdScreenBpreakpoint2}) {
+      padding: 2.4rem 4rem;
+    }
+
+    @media (min-width: ${lgScreenBreakpoint2}) {
+      padding: 2.4rem 8rem;
+    }
+
+    @media (min-width: ${lgScreenBreakpoint3}) {
+      padding: 2.4rem 5%;
+    }
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 

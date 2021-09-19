@@ -45,3 +45,11 @@ export default function useComponentVisible(initialIsVisible) {
 export function stripDiacritics(str) {
   return str.normalize('NFD').replace(/\p{Diacritic}/gu, '');
 }
+
+export const mdScreenBreakpoint = '650px';
+export const mdScreenBpreakpoint2 = '746px';
+export const mdScreenBpreakpoint3 = '984px';
+
+export const lgScreenBreakpoint = '1325px';
+export const lgScreenBreakpoint2 = '1440px';
+export const lgScreenBreakpoint3 = '1600px';

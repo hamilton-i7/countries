@@ -39,7 +39,7 @@ function countriesReducer(state, action) {
   }
 }
 
-function Home() {
+export default function Home() {
   const [countriesState, dispatchCountries] = useReducer(countriesReducer, {
     countries: [],
     showNoCountries: false,
@@ -160,5 +160,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;

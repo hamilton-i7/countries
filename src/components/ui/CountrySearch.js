@@ -1,12 +1,13 @@
 import StyledInput from '../general/Input.style';
 
-function CountrySearchContainer({
+export default function CountrySearchContainer({
   searchQuery,
   onQueryChange,
   dropdownContent,
+  className,
 }) {
   return (
-    <header>
+    <header className={className}>
       <StyledInput
         placeholder="Search for a country..."
         value={searchQuery}
@@ -16,5 +17,3 @@ function CountrySearchContainer({
     </header>
   );
 }
-
-export default CountrySearchContainer;

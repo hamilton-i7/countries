@@ -5,6 +5,7 @@ export const lightTheme = {
   onBackground: Colors.WOODSMOKE,
   surface: Colors.WHITE,
   onSurface: Colors.GRAY,
+  surfaceHover: Colors.GALLERY,
 };
 
 export const darkTheme = {
@@ -12,4 +13,5 @@ export const darkTheme = {
   onBackground: Colors.WHITE,
   surface: Colors.OXFORD_BLUE,
   onSurface: Colors.WHITE,
+  surfaceHover: Colors.CORNFLOWER_BLUE,
 };

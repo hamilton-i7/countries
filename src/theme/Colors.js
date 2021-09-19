@@ -10,3 +10,7 @@ export const GRAY = '#858585'; // Light Mode Input
 export const ALABASTER = '#FAFAFA'; // Light Mode Background
 
 export const WHITE = '#FFFFFF'; // Dark Mode Text & Light Mode Elements
+
+export const CORNFLOWER_BLUE = '#32424FE7'; // Surface elements on hover (dark)
+
+export const GALLERY = '#F7F7F7D2'; // Surface elements on hover (light)
