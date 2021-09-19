@@ -4,6 +4,7 @@ import { toRGBA } from '../../utils';
 import { SHADOW } from './GlobalStyles.style';
 
 const StyledInput = styled(Input)`
+  background-color: ${props => props.theme.surface};
   border: none;
   border-radius: 0.5rem;
   box-shadow: ${SHADOW};

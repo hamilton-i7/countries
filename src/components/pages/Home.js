@@ -1,4 +1,3 @@
-import StyledNav from '../general/Nav.style';
 import StyledCountrySearchContainer from '../ui/CountrySearch.style';
 import StyledCountries from '../ui/Countries.style';
 import { useEffect, useReducer } from 'react';
@@ -146,7 +145,6 @@ function Home() {
 
   return (
     <>
-      <StyledNav />
       <main>
         <StyledCountrySearchContainer
           searchQuery={countriesState.searchQuery}

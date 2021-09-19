@@ -9,4 +9,4 @@ export const GRAY = '#858585'; // Light Mode Input
 
 export const ALABASTER = '#FAFAFA'; // Light Mode Background
 
-export const WHITE = 'white'; // Dark Mode Text & Light Mode Elements
+export const WHITE = '#FFFFFF'; // Dark Mode Text & Light Mode Elements
