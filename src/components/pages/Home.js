@@ -24,6 +24,8 @@ const regions = [
   'Oceania',
 ];
 
+const flags = ['name', 'capital', 'population', 'region', 'flag', 'alpha2Code'];
+
 function countriesReducer(state, action) {
   switch (action.type) {
     case GET_COUNTRIES:
@@ -64,9 +66,8 @@ export default function Home() {
     const identifier = setTimeout(() => {
       if (countriesState.searchQuery) {
         if (countriesState.selectedRegion !== regions[0]) {
-          getCountriesByName(
-            countriesState.searchQuery,
-            data => {
+          getCountriesByName(countriesState.searchQuery)
+            .then(data => {
               const countries = data.filter(
                 country => country.region === countriesState.selectedRegion
               );
@@ -83,44 +84,30 @@ export default function Home() {
                     type: TOGGLE_NO_COUNTRIES,
                     payload: true,
                   });
-            },
-            error => {
-              if (error.status === 404) handleError();
-            }
-          );
+            })
+            .catch(() => handleError());
         } else {
-          getCountriesByName(
-            countriesState.searchQuery,
-            data => {
+          getCountriesByName(countriesState.searchQuery)
+            .then(data => {
               dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
               dispatchCountries({ type: GET_COUNTRIES, payload: data });
-            },
-            error => {
-              if (error.status === 404) handleError();
-            }
-          );
+            })
+            .catch(() => handleError());
         }
       } else {
         if (countriesState.selectedRegion !== regions[0]) {
-          getCountriesByRegion(
-            countriesState.selectedRegion,
-            data => {
+          getCountriesByRegion(countriesState.selectedRegion)
+            .then(data => {
               dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
               dispatchCountries({ type: GET_COUNTRIES, payload: data });
-            },
-            error => {
-              if (error.status === 404) handleError();
-            }
-          );
+            })
+            .catch(() => handleError());
         } else {
-          getAllCountries(
-            data => {
-              dispatchCountries({ type: GET_COUNTRIES, payload: data });
-            },
-            error => {
-              if (error.status === 404) handleError();
-            }
-          );
+          getAllCountries(...flags)
+            .then(data =>
+              dispatchCountries({ type: GET_COUNTRIES, payload: data })
+            )
+            .catch(() => handleError());
         }
       }
     }, QUERY_DELAY);
@@ -129,9 +116,9 @@ export default function Home() {
   }, [countriesState.searchQuery, countriesState.selectedRegion]);
 
   useEffect(() => {
-    getAllCountries(data => {
-      dispatchCountries({ type: GET_COUNTRIES, payload: data });
-    });
+    getAllCountries(...flags).then(data =>
+      dispatchCountries({ type: GET_COUNTRIES, payload: data })
+    );
   }, []);
 
   const dropdownContent = (
@@ -150,13 +137,11 @@ export default function Home() {
         onQueryChange={handleSearchQuery}
         dropdownContent={dropdownContent}
       />
-      <>
-        {countriesState.showNoCountries ? (
-          <StyledNoCountries />
-        ) : (
-          <StyledCountries countries={countriesState.countries} />
-        )}
-      </>
+      {countriesState.showNoCountries ? (
+        <StyledNoCountries />
+      ) : (
+        <StyledCountries countries={countriesState.countries} />
+      )}
     </>
   );
 }

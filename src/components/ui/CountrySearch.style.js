@@ -4,19 +4,22 @@ import CountrySearchContainer from './CountrySearch';
 const StyledCountrySearchContainer = styled(CountrySearchContainer)`
   display: flex;
   flex-direction: column;
-  padding: 2.4rem 1.6rem;
-  width: 100%;
+  margin: 2.4rem 1.6rem;
+  margin-bottom: 3.2rem;
 
   @media (min-width: 746px) {
-    padding: 2.4rem 4rem;
+    margin: 2.4rem 4rem;
+    margin-bottom: 3.2rem;
   }
 
   @media (min-width: 1440px) {
-    padding: 2.4rem 8rem;
+    margin: 2.4rem 8rem;
+    margin-bottom: 3.2rem;
   }
 
   @media (min-width: 1600px) {
-    padding: 2.4rem 5%;
+    margin: 2.4rem 5%;
+    margin-bottom: 3.2rem;
   }
 
   @media (min-width: 650px) {

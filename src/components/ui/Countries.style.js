@@ -5,9 +5,8 @@ const StyledCountries = styled(Countries)`
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  margin-top: 0.8rem;
-  padding: 2.4rem 1.6rem;
-  padding-bottom: 6.5rem;
+  margin: 0 1.6rem;
+  margin-bottom: 6.5rem;
   row-gap: 4rem;
 
   @media (min-width: 650px) {
@@ -15,7 +14,7 @@ const StyledCountries = styled(Countries)`
   }
 
   @media (min-width: 746px) {
-    padding: 2.4rem 4rem;
+    margin: 0 4rem;
   }
 
   @media (min-width: 984px) {
@@ -29,11 +28,11 @@ const StyledCountries = styled(Countries)`
 
   @media (min-width: 1440px) {
     gap: 7.5rem;
-    padding: 2.4rem 8rem;
+    margin: 0 8rem;
   }
 
   @media (min-width: 1600px) {
-    padding: 2.4rem 5%;
+    margin: 0 5%;
   }
 `;
 

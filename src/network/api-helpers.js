@@ -1,31 +1,47 @@
 import axios from 'axios';
 
 const BASIC_API_URL = 'https://restcountries.eu/rest/v2';
-const BASIC_FLAGS = '/all?fields=name;capital;population;region;flag';
 
-export async function getAllCountries(onSucess, onFailure) {
+export async function getAllCountries(...fields) {
+  const url =
+    fields.length !== 0
+      ? BASIC_API_URL + `/all?fields=${fields.join(';')}`
+      : BASIC_API_URL + '/all';
   try {
-    const response = await axios.get(BASIC_API_URL + BASIC_FLAGS);
-    onSucess(response.data);
+    const response = await axios.get(url);
+    return response.data;
   } catch (error) {
-    onFailure(error.response);
+    return error.response;
   }
 }
 
-export async function getCountriesByRegion(region, onSucess, onFailure) {
+export async function getCountriesByRegion(region) {
   try {
-    const response = await axios.get(`${BASIC_API_URL}/region/${region}`);
-    onSucess(response.data);
+    const response = await axios.get(BASIC_API_URL + '/region/' + region);
+    return response.data;
   } catch (error) {
-    onFailure(error.response);
+    return error.response;
   }
 }
 
-export async function getCountriesByName(name, onSucess, onFailure) {
+export async function getCountriesByName(name) {
   try {
     const response = await axios.get(BASIC_API_URL + '/name/' + name);
-    onSucess(response.data);
+    return response.data;
   } catch (error) {
-    onFailure(error.response);
+    return error.response;
+  }
+}
+
+export async function getCountryByCode(code, ...fields) {
+  const url =
+    fields.length !== 0
+      ? `${BASIC_API_URL}/alpha/${code}?fields=${fields.join(';')}`
+      : `${BASIC_API_URL}/alpha/${code}`;
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    return error.response;
   }
 }
