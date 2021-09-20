@@ -145,18 +145,18 @@ export default function Home() {
 
   return (
     <>
-      <main>
-        <StyledCountrySearchContainer
-          searchQuery={countriesState.searchQuery}
-          onQueryChange={handleSearchQuery}
-          dropdownContent={dropdownContent}
-        />
+      <StyledCountrySearchContainer
+        searchQuery={countriesState.searchQuery}
+        onQueryChange={handleSearchQuery}
+        dropdownContent={dropdownContent}
+      />
+      <>
         {countriesState.showNoCountries ? (
           <StyledNoCountries />
         ) : (
           <StyledCountries countries={countriesState.countries} />
         )}
-      </main>
+      </>
     </>
   );
 }

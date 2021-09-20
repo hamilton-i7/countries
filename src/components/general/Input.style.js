@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input from './Input';
-import { mdScreenBreakpoint, toRGBA } from '../../utils';
+import { toRGBA } from '../../utils';
 import { SHADOW } from './GlobalStyles.style';
 
 const StyledInput = styled(Input)`
@@ -20,7 +20,7 @@ const StyledInput = styled(Input)`
     font-weight: 300;
   }
 
-  @media (min-width: ${mdScreenBreakpoint}) {
+  @media (min-width: 650px) {
     height: 5.6rem;
   }
 `;

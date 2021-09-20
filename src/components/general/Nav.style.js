@@ -1,9 +1,4 @@
 import styled from 'styled-components';
-import {
-  lgScreenBreakpoint2,
-  mdScreenBpreakpoint2,
-  mdScreenBreakpoint,
-} from '../../utils';
 import Nav from './Nav';
 
 const StyledNav = styled(Nav)`
@@ -13,11 +8,11 @@ const StyledNav = styled(Nav)`
   margin: ${props => props.margin || 0};
   padding: 3rem 1.6rem;
 
-  @media (min-width: ${mdScreenBpreakpoint2}) {
+  @media (min-width: 746px) {
     padding: 3rem 4rem;
   }
 
-  @media (min-width: ${lgScreenBreakpoint2}) {
+  @media (min-width: 1440px) {
     padding: 3rem 8rem;
   }
 
@@ -26,11 +21,11 @@ const StyledNav = styled(Nav)`
     font-size: 1.4rem;
     font-weight: 800;
 
-    @media (min-width: ${mdScreenBreakpoint}) {
+    @media (min-width: 650px) {
       font-size: 2rem;
     }
 
-    @media (min-width: ${lgScreenBreakpoint2}) {
+    @media (min-width: 1440px) {
       font-size: 2.4rem;
     }
   }

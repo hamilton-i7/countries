@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import FilterDropdown from './FilterDropdown';
 import { SHADOW } from '../general/GlobalStyles.style';
-import { mdScreenBreakpoint } from '../../utils';
 
 const StyledFilterDropdown = styled(FilterDropdown)`
   cursor: pointer;
@@ -9,7 +8,7 @@ const StyledFilterDropdown = styled(FilterDropdown)`
   position: relative;
   width: 20rem;
 
-  @media (min-width: ${mdScreenBreakpoint}) {
+  @media (min-width: 650px) {
     margin-top: 0;
   }
 
@@ -25,7 +24,7 @@ const StyledFilterDropdown = styled(FilterDropdown)`
     text-align: start;
     width: 100%;
 
-    @media (min-width: ${mdScreenBreakpoint}) {
+    @media (min-width: 650px) {
       height: 5.6rem;
     }
 

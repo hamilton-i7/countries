@@ -2,11 +2,11 @@ import StyledCountryCard from './CountryCard.style';
 
 function Countries({ countries, className }) {
   return (
-    <div className={className}>
+    <main className={className}>
       {countries.map(country => (
         <StyledCountryCard key={country.name} country={country} />
       ))}
-    </div>
+    </main>
   );
 }
 

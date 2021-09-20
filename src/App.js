@@ -35,9 +35,7 @@ export default function App() {
   return (
     <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <header>
-        <StyledNav lightMode={isLightTheme} onThemeToggle={handleThemeToggle} />
-      </header>
+      <StyledNav lightMode={isLightTheme} onThemeToggle={handleThemeToggle} />
       <Switch>
         <Route path="/" children={<Home />} />
       </Switch>

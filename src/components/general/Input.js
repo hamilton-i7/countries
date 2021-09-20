@@ -1,7 +1,6 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { mdScreenBreakpoint } from '../../utils';
 
 function Input({ value, onValueChange, placeholder, className }) {
   return (
@@ -22,7 +21,7 @@ const InputContainer = styled.div`
   max-width: 48rem;
   position: relative;
 
-  @media (min-width: ${mdScreenBreakpoint}) {
+  @media (min-width: 650px) {
     flex: 1;
     margin-right: 6rem;
   }
