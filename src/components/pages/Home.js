@@ -67,13 +67,13 @@ export default function Home() {
       if (countriesState.searchQuery) {
         if (countriesState.selectedRegion !== regions[0]) {
           getCountriesByName(countriesState.searchQuery)
-            .then(data => {
-              const countries = data.filter(
+            .then(response => {
+              const countries = response.data.filter(
                 country => country.region === countriesState.selectedRegion
               );
               dispatchCountries({ type: GET_COUNTRIES, payload: countries });
 
-              data.some(
+              response.data.some(
                 country => country.region === countriesState.selectedRegion
               )
                 ? dispatchCountries({
@@ -88,24 +88,30 @@ export default function Home() {
             .catch(() => handleError());
         } else {
           getCountriesByName(countriesState.searchQuery)
-            .then(data => {
+            .then(response => {
               dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
-              dispatchCountries({ type: GET_COUNTRIES, payload: data });
+              dispatchCountries({
+                type: GET_COUNTRIES,
+                payload: response.data,
+              });
             })
             .catch(() => handleError());
         }
       } else {
         if (countriesState.selectedRegion !== regions[0]) {
           getCountriesByRegion(countriesState.selectedRegion)
-            .then(data => {
+            .then(response => {
               dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
-              dispatchCountries({ type: GET_COUNTRIES, payload: data });
+              dispatchCountries({
+                type: GET_COUNTRIES,
+                payload: response.data,
+              });
             })
             .catch(() => handleError());
         } else {
           getAllCountries(...flags)
-            .then(data =>
-              dispatchCountries({ type: GET_COUNTRIES, payload: data })
+            .then(response =>
+              dispatchCountries({ type: GET_COUNTRIES, payload: response.data })
             )
             .catch(() => handleError());
         }
@@ -116,8 +122,8 @@ export default function Home() {
   }, [countriesState.searchQuery, countriesState.selectedRegion]);
 
   useEffect(() => {
-    getAllCountries(...flags).then(data =>
-      dispatchCountries({ type: GET_COUNTRIES, payload: data })
+    getAllCountries(...flags).then(response =>
+      dispatchCountries({ type: GET_COUNTRIES, payload: response.data })
     );
   }, []);
 

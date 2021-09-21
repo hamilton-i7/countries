@@ -33,7 +33,8 @@ export default function CountryDetails({ className, country }) {
               <span>Native name:</span> {country.nativeName}
             </li>
             <li>
-              <span>Population:</span> {country.population}
+              <span>Population:</span>{' '}
+              {country.population.toLocaleString('en-US')}
             </li>
             <li>
               <span>Region</span> {country.region}

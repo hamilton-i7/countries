@@ -38,10 +38,6 @@ export const StyledCountryDetails = styled(CountryDetails)`
     & > ul {
       margin-top: 3.2rem;
 
-      & > li > p {
-        margin-top: 1rem;
-      }
-
       & ul {
         display: flex;
         flex-wrap: wrap;

@@ -43,7 +43,8 @@ const GlobalStyles = createGlobalStyle`
   }
   
   a {
-    text-decoration: none;
+    display: inline-block;
+    text-decoration: none;    
   }
 `;
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './components/general/GlobalStyles.style';
 import StyledNav from './components/general/Nav.style';
+import { StyledNotFound } from './components/general/NotFound.style';
 import Detail from './components/pages/Detail';
 import Home from './components/pages/Home';
 import { lightTheme, darkTheme } from './theme/Theme';
@@ -44,6 +45,7 @@ export default function App() {
         <Switch>
           <Route exact path={HOME_PATH} children={<Home />} />
           <Route path={DETAIL_PATH + '/:code'} children={<Detail />} />
+          <Route children={<StyledNotFound />} />
         </Switch>
       </ThemeProvider>
     </Router>
