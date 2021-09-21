@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledButton } from '../general/Button.style';
 import { v4 as UUID } from 'uuid';
+import { DETAIL_PATH } from '../../App';
 
 export default function CountryDetails({ className, country }) {
   const currencies = country.currencies
@@ -13,7 +14,10 @@ export default function CountryDetails({ className, country }) {
     <ul>
       {country.borders.map(border => (
         <li key={UUID()}>
-          <StyledButton text={border.name} />
+          <StyledButton
+            text={border.name}
+            linkTo={`${DETAIL_PATH}/${border.alpha3Code}`}
+          />
         </li>
       ))}
     </ul>

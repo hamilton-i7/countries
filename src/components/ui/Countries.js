@@ -7,8 +7,8 @@ function Countries({ countries, className }) {
     <main className={className}>
       {countries.map(country => (
         <Link
-          key={country.alpha2Code}
-          to={`${DETAIL_PATH}/${country.alpha2Code}`}
+          key={country.alpha3Code}
+          to={`${DETAIL_PATH}/${country.alpha3Code}`}
         >
           <StyledCountryCard country={country} />{' '}
         </Link>

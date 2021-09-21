@@ -26,6 +26,10 @@ export const StyledCountryDetails = styled(CountryDetails)`
     }
 
     & > div {
+      & > ul > li:not(:first-child):not(:last-child) {
+        margin: 0.8rem 0;
+      }
+
       & > ul:last-child {
         margin-top: 3.2rem;
       }
@@ -34,16 +38,15 @@ export const StyledCountryDetails = styled(CountryDetails)`
     & > ul {
       margin-top: 3.2rem;
 
-      & ul {
-        justify-items: center;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 100px);
-        margin-top: 1.6rem;
-        row-gap: 1rem;
+      & > li > p {
+        margin-top: 1rem;
+      }
 
-        & > li:not(:last-child) {
-          margin-right: 1rem;
-        }
+      & ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1.6rem;
+        gap: 1rem;
       }
     }
   }
