@@ -26,7 +26,7 @@ const StyledCountrySearchContainer = styled(CountrySearchContainer)`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    margin: 4.8rem 0;
+    margin: 4.8rem 4rem;
   }
 `;
 

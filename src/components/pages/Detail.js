@@ -53,26 +53,31 @@ export default function Detail() {
   }
 
   useEffect(() => {
-    getCountryByCode(code, ...flags)
-      .then(response => {
-        setCountry(response.data);
-        return getAllCountries('name', 'alpha3Code');
-      })
-      .then(response => {
-        setConnectionStatus(status.success);
-        setCountry(prevState => {
-          const match = response.data.filter(data =>
-            prevState.borders.includes(data.alpha3Code)
-          );
-          return {
-            ...prevState,
-            borders: match,
-          };
+    const identifier = setTimeout(() => {
+      getCountryByCode(code, ...flags)
+        .then(response => {
+          setCountry(response.data);
+          return getAllCountries('name', 'alpha3Code');
+        })
+        .then(response => {
+          setConnectionStatus(status.success);
+          setCountry(prevState => {
+            const match = response.data.filter(data =>
+              prevState.borders.includes(data.alpha3Code)
+            );
+            return {
+              ...prevState,
+              borders: match,
+            };
+          });
+        })
+        .catch(error => {
+          if (error.response.status === 400)
+            setConnectionStatus(status.failure);
         });
-      })
-      .catch(error => {
-        if (error.response.status === 400) setConnectionStatus(status.failure);
-      });
+    }, 500);
+
+    return () => clearTimeout(identifier);
   }, [code]);
 
   return (

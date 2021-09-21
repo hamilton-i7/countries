@@ -8,11 +8,12 @@ const StyledNoCountries = styled(NoCountries)`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  margin-bottom: 6rem;
 
-  & > svg {
-    color: ${props => props.theme.onSurface};
-    font-size: 3.2rem;
-    margin-top: 2.4rem;
+  & > img {
+    display: block;
+    max-width: 100rem;
+    width: 100%;
   }
 
   & > h2 {
