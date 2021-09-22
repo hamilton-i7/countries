@@ -1,6 +1,6 @@
 import StyledCountrySearchContainer from '../ui/CountrySearch.style';
 import StyledCountries from '../ui/Countries.style';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import {
   getAllCountries,
   getCountriesByName,
@@ -10,7 +10,6 @@ import {
 } from '../../network/api-helpers';
 import StyledNoCountries from '../ui/NoCountries.style';
 import StyledFilterDropdown from '../ui/FilterDropdown.style';
-import { useState } from 'react/cjs/react.development';
 import { StyledLoader } from '../general/Loader.style';
 import unexpectedErrorImg from '../../design/unexpected-error.svg';
 import { StyledErrorScreen } from '../ui/ErrorScreen.style';
