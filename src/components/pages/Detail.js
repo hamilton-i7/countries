@@ -29,7 +29,7 @@ const flags = [
 
 const ERROR_STATUS = 400;
 
-export default function Detail() {
+function Detail() {
   const { code } = useParams();
   const [connectionStatus, setConnectionStatus] = useState(status.loading);
   const [country, setCountry] = useState({
@@ -99,3 +99,5 @@ export default function Detail() {
     </>
   );
 }
+
+export default Detail;

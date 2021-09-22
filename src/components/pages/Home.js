@@ -54,7 +54,7 @@ function countriesReducer(state, action) {
   }
 }
 
-export default function Home() {
+function Home() {
   const [connectionStatus, setConnectionStatus] = useState(status.loading);
   const [countriesState, dispatchCountries] = useReducer(countriesReducer, {
     countries: [],
@@ -188,3 +188,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

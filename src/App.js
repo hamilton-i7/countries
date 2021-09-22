@@ -15,7 +15,7 @@ const DARK_THEME = 'dark theme';
 export const HOME_PATH = '/countries';
 export const DETAIL_PATH = '/countries/detail';
 
-export default function App() {
+function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
 
   useEffect(() => {
@@ -51,3 +51,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;
