@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './components/general/GlobalStyles.style';
 import StyledNav from './components/general/Nav.style';
@@ -38,17 +38,15 @@ function App() {
   };
 
   return (
-    <Router>
-      <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
-        <GlobalStyles />
-        <StyledNav lightMode={isLightTheme} onThemeToggle={handleThemeToggle} />
-        <Switch>
-          <Route exact path={HOME_PATH} children={<Home />} />
-          <Route path={DETAIL_PATH + '/:code'} children={<Detail />} />
-          <Route children={<StyledNotFound />} />
-        </Switch>
-      </ThemeProvider>
-    </Router>
+    <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <StyledNav lightMode={isLightTheme} onThemeToggle={handleThemeToggle} />
+      <Switch>
+        <Route exact path={HOME_PATH} children={<Home />} />
+        <Route path={DETAIL_PATH + '/:code'} children={<Detail />} />
+        <Route children={<StyledNotFound />} />
+      </Switch>
+    </ThemeProvider>
   );
 }
 
