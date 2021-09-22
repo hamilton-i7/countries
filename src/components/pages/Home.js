@@ -24,7 +24,14 @@ const regions = [
   'Oceania',
 ];
 
-const flags = ['name', 'capital', 'population', 'region', 'flag', 'alpha3Code'];
+const flags = [
+  'name',
+  'capital',
+  'population',
+  'region',
+  'flags',
+  'alpha3Code',
+];
 
 function countriesReducer(state, action) {
   switch (action.type) {

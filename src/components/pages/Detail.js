@@ -8,7 +8,7 @@ import { StyledCountryNotFound } from '../ui/CountryNotFound.style';
 import { StyledLoader } from '../general/Loader.style';
 
 const flags = [
-  'flag',
+  'flags',
   'name',
   'nativeName',
   'population',
@@ -37,7 +37,7 @@ export default function Detail() {
     name: '',
     currencies: [],
     languages: [],
-    flag: '',
+    flags: [],
     topLevelDomain: '',
     capital: '',
     region: '',
@@ -79,6 +79,7 @@ export default function Detail() {
           });
         })
         .catch(error => {
+          console.log(error);
           if (error.response.status >= ERROR_STATUS)
             setConnectionStatus(status.failure);
         });

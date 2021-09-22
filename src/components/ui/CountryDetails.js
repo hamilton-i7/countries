@@ -24,7 +24,7 @@ export default function CountryDetails({ className, country }) {
   );
   return (
     <main className={className}>
-      <img src={country.flag} alt="Country flag" />
+      <img src={country.flags[0]} alt="Country flag" />
       <section>
         <h2>{country.name}</h2>
         <div>

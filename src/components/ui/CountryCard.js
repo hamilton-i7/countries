@@ -2,7 +2,7 @@ function CountryCard({ country, className }) {
   return (
     <div className={className}>
       <header>
-        <img src={country.flag} alt="Flag" />
+        <img src={country.flags[0]} alt="Flag" />
       </header>
       <div>
         <h2>{country.name}</h2>
