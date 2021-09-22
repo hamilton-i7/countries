@@ -2,6 +2,14 @@ import axios from 'axios';
 
 const BASIC_API_URL = 'https://restcountries.com/v2';
 
+export const status = {
+  success: 1,
+  failure: -1,
+  loading: 0,
+};
+
+export const LOADING_DELAY = 500;
+
 export function getAllCountries(...fields) {
   const url =
     fields.length !== 0

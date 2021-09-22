@@ -5,9 +5,15 @@ import {
   getAllCountries,
   getCountriesByName,
   getCountriesByRegion,
+  LOADING_DELAY,
+  status,
 } from '../../network/api-helpers';
 import StyledNoCountries from '../ui/NoCountries.style';
 import StyledFilterDropdown from '../ui/FilterDropdown.style';
+import { useState } from 'react/cjs/react.development';
+import { StyledLoader } from '../general/Loader.style';
+import unexpectedErrorImg from '../../design/unexpected-error.svg';
+import { StyledErrorScreen } from '../ui/ErrorScreen.style';
 
 const GET_COUNTRIES = 'GET ALL COUNTRIES';
 const TOGGLE_NO_COUNTRIES = 'TOGGLE NO COUNTRIES';
@@ -49,6 +55,7 @@ function countriesReducer(state, action) {
 }
 
 export default function Home() {
+  const [connectionStatus, setConnectionStatus] = useState(status.loading);
   const [countriesState, dispatchCountries] = useReducer(countriesReducer, {
     countries: [],
     showNoCountries: false,
@@ -68,6 +75,25 @@ export default function Home() {
     dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: true });
     dispatchCountries({ type: GET_COUNTRIES, payload: [] });
   };
+
+  let bodyContent = (
+    <StyledLoader loading={connectionStatus === status.loading} />
+  );
+
+  if (connectionStatus === status.success) {
+    bodyContent = countriesState.showNoCountries ? (
+      <StyledNoCountries />
+    ) : (
+      <StyledCountries countries={countriesState.countries} />
+    );
+  } else if (connectionStatus === status.failure) {
+    bodyContent = (
+      <StyledErrorScreen
+        imgSrc={unexpectedErrorImg}
+        message="Unexpected error. Try again later..."
+      />
+    );
+  }
 
   useEffect(() => {
     const identifier = setTimeout(() => {
@@ -129,9 +155,17 @@ export default function Home() {
   }, [countriesState.searchQuery, countriesState.selectedRegion]);
 
   useEffect(() => {
-    getAllCountries(...flags).then(response =>
-      dispatchCountries({ type: GET_COUNTRIES, payload: response.data })
-    );
+    setConnectionStatus(status.loading);
+    const identifier = setTimeout(() => {
+      getAllCountries(...flags)
+        .then(response => {
+          setConnectionStatus(status.success);
+          dispatchCountries({ type: GET_COUNTRIES, payload: response.data });
+        })
+        .catch(() => setConnectionStatus(status.failure));
+    }, LOADING_DELAY);
+
+    return () => clearTimeout(identifier);
   }, []);
 
   const dropdownContent = (
@@ -150,11 +184,7 @@ export default function Home() {
         onQueryChange={handleSearchQuery}
         dropdownContent={dropdownContent}
       />
-      {countriesState.showNoCountries ? (
-        <StyledNoCountries />
-      ) : (
-        <StyledCountries countries={countriesState.countries} />
-      )}
+      {bodyContent}
     </>
   );
 }

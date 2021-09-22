@@ -12,7 +12,7 @@ const THEME = 'theme';
 const LIGHT_THEME = 'light theme';
 const DARK_THEME = 'dark theme';
 
-export const HOME_PATH = '/';
+export const HOME_PATH = '/countries';
 export const DETAIL_PATH = '/detail';
 
 export default function App() {

@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useEffect } from 'react/cjs/react.development';
-import { getAllCountries, getCountryByCode } from '../../network/api-helpers';
+import {
+  getAllCountries,
+  getCountryByCode,
+  LOADING_DELAY,
+  status,
+} from '../../network/api-helpers';
 import { StyledCountryDetailsHeader } from '../ui/CountryDetailsHeader.style';
 import { StyledCountryDetails } from '../ui/CountryDetails.style';
-import { StyledCountryNotFound } from '../ui/CountryNotFound.style';
+import { StyledErrorScreen } from '../ui/ErrorScreen.style';
 import { StyledLoader } from '../general/Loader.style';
+import countryNotFoundImg from '../../design/country-not-found.svg';
 
 const flags = [
   'flags',
@@ -21,13 +27,6 @@ const flags = [
   'borders',
 ];
 
-const status = {
-  success: 1,
-  failure: -1,
-  loading: 0,
-};
-
-const LOADING_DELAY = 500;
 const ERROR_STATUS = 400;
 
 export default function Detail() {
@@ -54,7 +53,12 @@ export default function Detail() {
   if (connectionStatus === status.success) {
     bodyContent = <StyledCountryDetails country={country} />;
   } else if (connectionStatus === status.failure) {
-    bodyContent = <StyledCountryNotFound />;
+    bodyContent = (
+      <StyledErrorScreen
+        imgSrc={countryNotFoundImg}
+        message="Country not found..."
+      />
+    );
   }
 
   useEffect(() => {
