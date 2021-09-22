@@ -10,7 +10,7 @@ function Countries({ countries, className }) {
           key={country.alpha3Code}
           to={`${DETAIL_PATH}/${country.alpha3Code}`}
         >
-          <StyledCountryCard country={country} />{' '}
+          <StyledCountryCard country={country} />
         </Link>
       ))}
     </main>

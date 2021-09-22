@@ -37,10 +37,10 @@ export default function CountryDetails({ className, country }) {
               {country.population.toLocaleString('en-US')}
             </li>
             <li>
-              <span>Region</span> {country.region}
+              <span>Continent:</span> {country.continent}
             </li>
             <li>
-              <span>Sub Region:</span> {country.subregion}
+              <span>Region:</span> {country.region}
             </li>
             <li>
               <span>Capital:</span> {country.capital}

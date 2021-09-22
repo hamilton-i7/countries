@@ -4,7 +4,7 @@ import { useEffect, useReducer, useState } from 'react';
 import {
   getAllCountries,
   getCountriesByName,
-  getCountriesByRegion,
+  getCountriesByContinent,
   LOADING_DELAY,
   status,
 } from '../../network/api-helpers';
@@ -33,7 +33,7 @@ const flags = [
   'name',
   'capital',
   'population',
-  'region',
+  'continent',
   'flags',
   'alpha3Code',
 ];
@@ -70,7 +70,7 @@ function Home() {
     dispatchCountries({ type: CHANGE_REGION, payload: region });
   };
 
-  const handleError = () => {
+  const handleNoCountriesMessage = () => {
     dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: true });
     dispatchCountries({ type: GET_COUNTRIES, payload: [] });
   };
@@ -96,17 +96,23 @@ function Home() {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
+      setConnectionStatus(status.loading);
       if (countriesState.searchQuery) {
         if (countriesState.selectedRegion !== regions[0]) {
           getCountriesByName(countriesState.searchQuery)
             .then(response => {
+              setConnectionStatus(status.success);
+              if (response.data.status === 404) {
+                handleNoCountriesMessage();
+                return;
+              }
               const countries = response.data.filter(
-                country => country.region === countriesState.selectedRegion
+                country => country.continent === countriesState.selectedRegion
               );
               dispatchCountries({ type: GET_COUNTRIES, payload: countries });
 
               response.data.some(
-                country => country.region === countriesState.selectedRegion
+                country => country.continent === countriesState.selectedRegion
               )
                 ? dispatchCountries({
                     type: TOGGLE_NO_COUNTRIES,
@@ -117,35 +123,47 @@ function Home() {
                     payload: true,
                   });
             })
-            .catch(() => handleError());
+            .catch(() => setConnectionStatus(status.failure));
         } else {
           getCountriesByName(countriesState.searchQuery)
             .then(response => {
+              setConnectionStatus(status.success);
+              if (response.data.status === 404) {
+                handleNoCountriesMessage();
+                return;
+              }
+
               dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
               dispatchCountries({
                 type: GET_COUNTRIES,
                 payload: response.data,
               });
             })
-            .catch(() => handleError());
+            .catch(() => setConnectionStatus(status.failure));
         }
       } else {
+        dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
+
         if (countriesState.selectedRegion !== regions[0]) {
-          getCountriesByRegion(countriesState.selectedRegion)
+          getCountriesByContinent(countriesState.selectedRegion)
             .then(response => {
-              dispatchCountries({ type: TOGGLE_NO_COUNTRIES, payload: false });
+              setConnectionStatus(status.success);
               dispatchCountries({
                 type: GET_COUNTRIES,
                 payload: response.data,
               });
             })
-            .catch(() => handleError());
+            .catch(() => setConnectionStatus(status.failure));
         } else {
           getAllCountries(...flags)
-            .then(response =>
-              dispatchCountries({ type: GET_COUNTRIES, payload: response.data })
-            )
-            .catch(() => handleError());
+            .then(response => {
+              setConnectionStatus(status.success);
+              dispatchCountries({
+                type: GET_COUNTRIES,
+                payload: response.data,
+              });
+            })
+            .catch(() => setConnectionStatus(status.failure));
         }
       }
     }, QUERY_DELAY);

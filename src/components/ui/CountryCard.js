@@ -10,7 +10,7 @@ function CountryCard({ country, className }) {
           <span>Population:</span> {country.population.toLocaleString('en-US')}
         </p>
         <p>
-          <span>Region:</span> {country.region}
+          <span>Continent:</span> {country.continent}
         </p>
         {country.capital && (
           <p>

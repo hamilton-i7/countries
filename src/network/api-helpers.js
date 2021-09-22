@@ -18,8 +18,8 @@ export function getAllCountries(...fields) {
   return axios.get(url);
 }
 
-export function getCountriesByRegion(region) {
-  return axios.get(BASIC_API_URL + '/region/' + region);
+export function getCountriesByContinent(continent) {
+  return axios.get(BASIC_API_URL + '/continent/' + continent);
 }
 
 export function getCountriesByName(name) {
