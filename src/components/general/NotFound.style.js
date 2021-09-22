@@ -11,6 +11,7 @@ export const StyledNotFound = styled(NotFound)`
   padding: 6rem 0;
 
   & > img {
+    max-width: 95.2rem;
     width: 100%;
   }
 

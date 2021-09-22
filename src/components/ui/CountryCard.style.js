@@ -33,6 +33,9 @@ const StyledCountryCard = styled(CountryCard)`
       font-weight: 800;
       margin-bottom: 1.6rem;
       margin-top: 2.4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     & > p {

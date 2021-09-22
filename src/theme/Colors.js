@@ -13,4 +13,4 @@ export const WHITE = '#FFFFFF'; // Dark Mode Text & Light Mode Elements
 
 export const CORNFLOWER_BLUE = '#32424FE7'; // Surface elements on hover (dark)
 
-export const GALLERY = '#F7F7F7D2'; // Surface elements on hover (light)
+export const GALLERY = '#00000010'; // Surface elements on hover (light)

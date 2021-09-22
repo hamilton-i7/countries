@@ -15,6 +15,7 @@ const StyledCountries = styled(Countries)`
 
   @media (min-width: 746px) {
     margin: 0 4rem;
+    margin-bottom: 6.5rem;
   }
 
   @media (min-width: 984px) {
@@ -29,10 +30,12 @@ const StyledCountries = styled(Countries)`
   @media (min-width: 1440px) {
     gap: 7.5rem;
     margin: 0 8rem;
+    margin-bottom: 6.5rem;
   }
 
   @media (min-width: 1600px) {
     margin: 0 5%;
+    margin-bottom: 6.5rem;
   }
 `;
 

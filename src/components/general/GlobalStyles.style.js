@@ -23,12 +23,6 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  body, #root, main {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  }
-
   body {
     background-color: ${props => props.theme.background};
     box-sizing: border-box;
@@ -45,6 +39,12 @@ const GlobalStyles = createGlobalStyle`
   a {
     display: inline-block;
     text-decoration: none;    
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 `;
 

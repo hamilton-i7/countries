@@ -6,11 +6,7 @@ const StyledNav = styled(Nav)`
   display: flex;
   justify-content: space-between;
   margin: ${props => props.margin || 0};
-  padding: 3rem 1.6rem;
-
-  @media (min-width: 746px) {
-    padding: 3rem 4rem;
-  }
+  padding: 3rem 5%;
 
   @media (min-width: 1440px) {
     padding: 3rem 8rem;

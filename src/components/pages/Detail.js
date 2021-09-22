@@ -4,8 +4,8 @@ import { useEffect } from 'react/cjs/react.development';
 import { getAllCountries, getCountryByCode } from '../../network/api-helpers';
 import { StyledCountryDetailsHeader } from '../ui/CountryDetailsHeader.style';
 import { StyledCountryDetails } from '../ui/CountryDetails.style';
-import { StyledSkeletonDetails } from '../general/SkeletonDetails.style';
 import { StyledCountryNotFound } from '../ui/CountryNotFound.style';
+import { StyledLoader } from '../general/Loader.style';
 
 const flags = [
   'flag',
@@ -27,6 +27,9 @@ const status = {
   loading: 0,
 };
 
+const LOADING_DELAY = 500;
+const ERROR_STATUS = 400;
+
 export default function Detail() {
   const { code } = useParams();
   const [connectionStatus, setConnectionStatus] = useState(status.loading);
@@ -44,7 +47,9 @@ export default function Detail() {
     nativeName: '',
   });
 
-  let bodyContent = <StyledSkeletonDetails />;
+  let bodyContent = (
+    <StyledLoader loading={connectionStatus === status.loading} />
+  );
 
   if (connectionStatus === status.success) {
     bodyContent = <StyledCountryDetails country={country} />;
@@ -53,6 +58,8 @@ export default function Detail() {
   }
 
   useEffect(() => {
+    setConnectionStatus(status.loading);
+
     const identifier = setTimeout(() => {
       getCountryByCode(code, ...flags)
         .then(response => {
@@ -72,10 +79,10 @@ export default function Detail() {
           });
         })
         .catch(error => {
-          if (error.response.status === 400)
+          if (error.response.status >= ERROR_STATUS)
             setConnectionStatus(status.failure);
         });
-    }, 500);
+    }, LOADING_DELAY);
 
     return () => clearTimeout(identifier);
   }, [code]);

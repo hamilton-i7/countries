@@ -10,4 +10,16 @@ export const StyledButton = styled(Button)`
   margin: ${props => props.margin || 0};
   outline: none;
   padding: 0.6rem 2.4rem;
+
+  &:hover {
+    background-color: ${props => props.theme.surfaceHover};
+  }
+
+  @media (min-width: 650px) {
+    font-size: 1.6rem;
+  }
+
+  & > svg {
+    margin-right: 1rem;
+  }
 `;

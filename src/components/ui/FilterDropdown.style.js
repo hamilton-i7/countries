@@ -24,6 +24,10 @@ const StyledFilterDropdown = styled(FilterDropdown)`
     text-align: start;
     width: 100%;
 
+    &:hover {
+      background-color: ${props => props.theme.surfaceHover};
+    }
+
     @media (min-width: 650px) {
       height: 5.6rem;
     }
