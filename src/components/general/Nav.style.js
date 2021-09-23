@@ -8,10 +8,6 @@ const StyledNav = styled(Nav)`
   margin: ${props => props.margin || 0};
   padding: 3rem 5%;
 
-  @media (min-width: 1440px) {
-    padding: 3rem 8rem;
-  }
-
   & > h1 {
     cursor: pointer;
     font-size: 1.4rem;
