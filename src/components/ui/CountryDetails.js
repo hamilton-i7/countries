@@ -1,15 +1,15 @@
-import React from 'react';
-import { StyledButton } from '../general/Button.style';
-import { v4 as UUID } from 'uuid';
-import { DETAIL_PATH } from '../../App';
+import React from 'react'
+import { StyledButton } from '../general/Button.style'
+import { v4 as UUID } from 'uuid'
+import { DETAIL_PATH } from '../../App'
 
 export default function CountryDetails({ className, country }) {
   const currencies = country.currencies
     .map(currency => currency.name)
-    .join(', ');
-  const languages = country.languages.map(language => language.name).join(', ');
+    .join(', ')
+  const languages = country.languages.map(language => language.name).join(', ')
 
-  const noBordersMessage = <p>No borders</p>;
+  const noBordersMessage = <p>No borders</p>
   const bordersContent = (
     <ul>
       {country.borders.map(border => (
@@ -21,10 +21,10 @@ export default function CountryDetails({ className, country }) {
         </li>
       ))}
     </ul>
-  );
+  )
   return (
     <main className={className}>
-      <img src={country.flags[0]} alt="Country flag" />
+      <img src={country.flags.svg} alt='Country flag' />
       <section>
         <h2>{country.name}</h2>
         <div>
@@ -66,5 +66,5 @@ export default function CountryDetails({ className, country }) {
         </ul>
       </section>
     </main>
-  );
+  )
 }
