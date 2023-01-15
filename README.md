@@ -37,12 +37,11 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
 - [Font Awesome](https://fontawesome.com/) - For icons
-- [React SPinners](https://www.npmjs.com/package/react-spinners) - For loading spinners
+- [React Spinners](https://www.npmjs.com/package/react-spinners) - For loading spinners
 - [Axios](https://www.npmjs.com/package/axios) - For HTTP requests
 - [REST Countries](https://restcountries.com/) - API
 
